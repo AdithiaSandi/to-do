@@ -1,38 +1,69 @@
+body {
+  font-family: "Roboto", sans-serif !important;
+}
+
 .App {
-  text-align: center;
+  max-width: 1000px;
+  margin: auto;
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
-}
-
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
-}
-
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
+header {
+  background: rgb(2, 0, 36);
+  background: linear-gradient(
+    307deg,
+    rgba(2, 0, 36, 1) 0%,
+    rgba(15, 15, 179, 1) 44%,
+    rgba(0, 212, 255, 1) 100%
+  );
+  padding: 80px;
   color: white;
 }
 
-.App-link {
-  color: #61dafb;
+header h1 {
+  font-weight: 700;
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+.content-bx {
+  padding: 80px 0;
+  position: relative;
+  background-color: black;
+}
+
+.content-bx .nav.nav-pills {
+  width: 72%;
+  margin: 0 auto;
+  border-radius: 50px;
+  background-color: rgb(255 255 255 / 10%);
+  overflow: hidden;
+  border: rgb(255 255 255 / 50%) solid 1px;
+}
+
+.content-bx .nav.nav-pills .nav-item {
+  width: 33.33333%;
+}
+
+.content-bx .nav.nav-pills .nav-item .nav-link {
+  text-align: center;
+  color: white;
+}
+
+.content-bx .nav.nav-pills .nav-link.active {
+  border-radius: 0;
+  border: white solid 2px;
+  z-index: 1;
+}
+
+.content-bx .nav.nav-pills .nav-link.active#react-aria1560616549-2-tab-first {
+  border-top-left-radius: 20px;
+  border-bottom-left-radius: 20px;
+  border: white solid 2px;
+  z-index: 1;
+}
+
+.content-bx .nav.nav-pills .nav-link.active#react-aria1560616549-2-tab-third {
+  border-top-right-radius: 20px;
+  border-bottom-right-radius: 20px;
+  border: white solid 2px;
+  z-index: 1;
 }
