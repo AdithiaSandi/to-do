@@ -1,13 +1,16 @@
 import { useEffect, useState } from "react";
-import { Tab, Col, Row, Nav, Container } from "react-bootstrap";
+import { Tab, Col, Row, Nav, Container, Toast, Button } from "react-bootstrap";
 import { Item } from "./Item.js";
 
 export const Content = () => {
   const todo = JSON.parse(localStorage.getItem("todos") || "[]");
   console.log(todo);
 
+  const [show, setShow] = useState(false);
+  const toggleShow = () => setShow(!show);
+
   const handleClick = (e) => {
-    console.log(e);
+    // toggleShow();
     let temp = todo;
     temp[e.target.id - 1].doing = !temp[e.target.id - 1].doing;
     localStorage.setItem("todos", JSON.stringify(temp));
@@ -20,6 +23,7 @@ export const Content = () => {
       <Container>
         <Row>
           <Col>
+            {/* <Button onClick={() => toggleShow()}>Click</Button> */}
             <Tab.Container defaultActiveKey="first">
               <Nav variant="pills" className="nav-pills justify-content-center">
                 <Nav.Item>
@@ -63,6 +67,14 @@ export const Content = () => {
           </Col>
         </Row>
       </Container>
+      <Toast show={show} onClose={toggleShow} autohide>
+        <Toast.Header>
+          <img src="holder.js/20x20?text=%20" className="rounded me-2" alt="" />
+          <strong className="me-auto">Bootstrap</strong>
+          <small>11 mins ago</small>
+        </Toast.Header>
+        <Toast.Body>Woohoo, you're reading this text in a Toast!</Toast.Body>
+      </Toast>
     </section>
   );
 };
