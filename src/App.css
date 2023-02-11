@@ -44,26 +44,40 @@ header h1 {
 }
 
 .content-bx .nav.nav-pills .nav-item .nav-link {
+  background: transparent;
+  position: relative;
   text-align: center;
   color: white;
+  z-index: 0;
 }
 
 .content-bx .nav.nav-pills .nav-link.active {
   border-radius: 0;
-  border: white solid 2px;
   z-index: 1;
+}
+
+.content-bx .nav.nav-pills .nav-link::before {
+  content: "";
+  position: absolute;
+  width: 0;
+  height: 100%;
+  top: 0;
+  left: 0;
+  background: linear-gradient(90.21deg, #aa367c -5.91%, #4a2fbd 111.58%);
+  transition: 0.3s ease-in-out;
+  z-index: -1;
+}
+
+.content-bx .nav.nav-pills .nav-link.active::before {
+  width: 100% !important;
 }
 
 .content-bx .nav.nav-pills .nav-link.active#react-aria1560616549-2-tab-first {
   border-top-left-radius: 20px;
   border-bottom-left-radius: 20px;
-  border: white solid 2px;
-  z-index: 1;
 }
 
 .content-bx .nav.nav-pills .nav-link.active#react-aria1560616549-2-tab-third {
   border-top-right-radius: 20px;
   border-bottom-right-radius: 20px;
-  border: white solid 2px;
-  z-index: 1;
 }
