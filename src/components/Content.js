@@ -1,6 +1,20 @@
+import { useEffect, useState } from "react";
 import { Tab, Col, Row, Nav, Container } from "react-bootstrap";
+import { Item } from "./Item.js";
 
 export const Content = () => {
+  const todo = JSON.parse(localStorage.getItem("todos") || "[]");
+  console.log(todo);
+
+  const handleClick = (e) => {
+    console.log(e);
+    let temp = todo;
+    temp[e.target.id - 1].doing = !temp[e.target.id - 1].doing;
+    localStorage.setItem("todos", JSON.stringify(temp));
+    console.log(temp);
+    window.location.reload();
+  };
+
   return (
     <section className="content-bx">
       <Container>
@@ -20,39 +34,29 @@ export const Content = () => {
               </Nav>
               <Tab.Content>
                 <Tab.Pane eventKey="first">
-                  <span>
-                    Fugiat officia sit Lorem laborum cupidatat nostrud id eu
-                    labore dolore Lorem cillum veniam laboris. Pariatur est
-                    magna consectetur minim quis. Laborum et dolor fugiat sint
-                    adipisicing magna non. Cillum sunt ad ad cupidatat nulla
-                    cillum. Nisi tempor mollit nostrud laborum quis quis Lorem
-                    veniam tempor non anim minim exercitation laboris.
-                  </span>
+                  {todo.map((item, index) => {
+                    item.id = index;
+                    item.handleClick = handleClick;
+                    if (item.doing === false && item.done === false) {
+                      return <Item {...item} />;
+                    }
+                  })}
                 </Tab.Pane>
                 <Tab.Pane eventKey="second">
-                  <span>
-                    Cillum sint officia culpa et. Incididunt exercitation aliqua
-                    eu aliqua sit nisi quis laborum dolore culpa reprehenderit
-                    in nisi. Nulla labore incididunt ullamco sunt dolore anim
-                    quis tempor esse. Commodo dolore et nisi sunt consectetur
-                    dolore irure cupidatat in duis do minim laborum.
-                    Reprehenderit aliquip aliquip sunt nulla minim exercitation
-                    laborum ea irure cillum est. Eu esse minim excepteur
-                    eiusmod.
-                  </span>
+                  {todo.map((item, index) => {
+                    item.id = index;
+                    if (item.doing === true && item.done === false) {
+                      return <Item {...item} />;
+                    }
+                  })}
                 </Tab.Pane>
                 <Tab.Pane eventKey="third">
-                  <span>
-                    Dolore enim labore enim adipisicing in ut est minim ullamco.
-                    Ullamco elit et aute mollit reprehenderit ad duis occaecat
-                    nostrud nulla qui sint pariatur. Mollit et ad do ad
-                    consequat sit nostrud. Veniam excepteur magna occaecat ipsum
-                    nisi sunt mollit sit ad deserunt quis eu. Incididunt
-                    consectetur minim nostrud reprehenderit elit officia sint
-                    tempor esse adipisicing nisi exercitation adipisicing Lorem.
-                    Veniam duis consequat sunt Lorem minim occaecat eu tempor
-                    ipsum Lorem sint est veniam.
-                  </span>
+                  {todo.map((item, index) => {
+                    item.id = index;
+                    if (item.done === true) {
+                      return <Item {...item} />;
+                    }
+                  })}
                 </Tab.Pane>
               </Tab.Content>
             </Tab.Container>
