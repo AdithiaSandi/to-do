@@ -25,7 +25,7 @@ export const Item = ({ doing, done, desc, id, handleClick }) => {
                 id={id + 1}
                 label={desc}
                 disabled={done}
-                // checked={doing ? doing : false}
+                checked={doing}
                 onChange={(e) => handleClick(e)}
               />
             </Form>
