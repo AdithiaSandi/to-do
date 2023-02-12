@@ -1,16 +1,25 @@
 import { useEffect, useState } from "react";
-import { Tab, Col, Row, Nav, Container, Toast, Button } from "react-bootstrap";
+import {
+  Tab,
+  Col,
+  Row,
+  Nav,
+  Container,
+  Toast,
+  Button,
+  Form,
+} from "react-bootstrap";
 import { Item } from "./Item.js";
 
 export const Content = () => {
   const todo = JSON.parse(localStorage.getItem("todos") || "[]");
   console.log(todo);
+  let desc;
 
   const [show, setShow] = useState(false);
   const toggleShow = () => setShow(!show);
 
   const handleClick = (e) => {
-    // toggleShow();
     let temp = todo;
     temp[e.target.id - 1].doing = !temp[e.target.id - 1].doing;
     localStorage.setItem("todos", JSON.stringify(temp));
@@ -18,9 +27,38 @@ export const Content = () => {
     window.location.reload();
   };
 
+  const handleSubmit = () => {
+    console.log("ENTER");
+    let temp = todo;
+    temp.push({
+      doing: false,
+      done: false,
+      desc: desc,
+    });
+    localStorage.setItem("todos", JSON.stringify(temp));
+  };
+
+  const handleInput = (str) => {
+    console.log(str);
+    desc = str;
+  };
+
   return (
     <section className="content-bx">
       <Container>
+        <Row>
+          <Col className="input-bx">
+            <Form onSubmit={() => handleSubmit()}>
+              <Form.Control
+                type="text"
+                id="inputPassword5"
+                aria-describedby="passwordHelpBlock"
+                placeholder="What To Do ?"
+                onChange={(e) => handleInput(e.target.value)}
+              />
+            </Form>
+          </Col>
+        </Row>
         <Row>
           <Col>
             {/* <Button onClick={() => toggleShow()}>Click</Button> */}
