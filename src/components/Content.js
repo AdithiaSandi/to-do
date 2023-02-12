@@ -28,7 +28,6 @@ export const Content = () => {
   };
 
   const handleSubmit = () => {
-    console.log("ENTER");
     let temp = todo;
     temp.push({
       doing: false,
@@ -39,7 +38,6 @@ export const Content = () => {
   };
 
   const handleInput = (str) => {
-    console.log(str);
     desc = str;
   };
 
