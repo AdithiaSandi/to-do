@@ -93,3 +93,17 @@ header h1 {
   background-color: #0d6efd !important;
   border-color: aqua !important;
 }
+
+.input-bx.col {
+  color: white;
+  max-width: 500px;
+  margin: 2em auto;
+}
+.input-bx .form-control {
+  background-color: aqua !important;
+  color: navy !important;
+  text-align: center;
+}
+.input-bx .form-label {
+  text-align: center;
+}
