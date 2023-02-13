@@ -60,6 +60,7 @@ export const Content = () => {
                 aria-describedby="todo"
                 placeholder="What To Do ?"
                 onChange={(e) => handleInput(e.target.value)}
+                maxLength="40"
               />
             </Form>
           </Col>
