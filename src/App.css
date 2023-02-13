@@ -23,7 +23,7 @@ header h1 {
 .content-bx {
   padding: 80px 0;
   position: relative;
-  background-color: navy;
+  background-color: rgb(0, 102, 255);
 }
 
 .content-bx .nav.nav-pills {
@@ -32,7 +32,7 @@ header h1 {
   border-radius: 50px;
   background-color: rgb(255 255 255 / 10%);
   overflow: hidden;
-  border: rgb(255 255 255 / 50%) solid 1px;
+  border: aqua solid 1px;
 }
 
 .content-bx .nav.nav-pills .nav-item {
@@ -99,11 +99,40 @@ header h1 {
   max-width: 500px;
   margin: 2em auto;
 }
+.input-bx.col form input {
+  border-radius: 2em;
+}
 .input-bx .form-control {
   background-color: aqua !important;
   color: navy !important;
   text-align: center;
 }
+.item-bx {
+  margin-bottom: 1em;
+  padding: 1em 0;
+  border-top-left-radius: 1em;
+  border-bottom-right-radius: 1em;
+  border-right: solid rgb(255 255 255 / 60%);
+  border-bottom: solid rgb(255 255 255 / 60%);
+  border-top: solid rgb(255 255 255 / 85%);
+  border-left: solid rgb(255 255 255 / 85%);
+}
 .input-bx .form-label {
   text-align: center;
+}
+.input-bx input::placeholder {
+  color: navy;
+  opacity: 0.5;
+}
+.item-bx .form-check label:hover {
+  border-radius: 5px;
+  color: navy;
+  background-color: aqua;
+}
+.item-bx button {
+  padding: 0 3px;
+  float: right;
+}
+.item-bx button img {
+  width: 20px;
 }

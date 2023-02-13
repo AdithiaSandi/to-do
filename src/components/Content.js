@@ -1,14 +1,5 @@
 import { useEffect, useState } from "react";
-import {
-  Tab,
-  Col,
-  Row,
-  Nav,
-  Container,
-  Toast,
-  Button,
-  Form,
-} from "react-bootstrap";
+import { Tab, Col, Row, Nav, Container, Toast, Form } from "react-bootstrap";
 import { Item } from "./Item.js";
 
 export const Content = () => {
@@ -41,6 +32,22 @@ export const Content = () => {
     desc = str;
   };
 
+  const handleFinish = (id) => {
+    let temp = todo;
+    temp[id].done = !temp[id].done;
+    localStorage.setItem("todos", JSON.stringify(temp));
+    console.log(temp);
+    window.location.reload();
+  };
+
+  const handleRemove = (id) => {
+    let temp = todo;
+    temp = temp.filter((item, index) => index != id);
+    localStorage.setItem("todos", JSON.stringify(temp));
+    console.log(temp);
+    window.location.reload();
+  };
+
   return (
     <section className="content-bx">
       <Container>
@@ -49,8 +56,8 @@ export const Content = () => {
             <Form onSubmit={() => handleSubmit()}>
               <Form.Control
                 type="text"
-                id="inputPassword5"
-                aria-describedby="passwordHelpBlock"
+                id="inputTodo"
+                aria-describedby="todo"
                 placeholder="What To Do ?"
                 onChange={(e) => handleInput(e.target.value)}
               />
@@ -77,6 +84,8 @@ export const Content = () => {
                   {todo.map((item, index) => {
                     item.id = index;
                     item.handleClick = handleClick;
+                    item.handleFinish = handleFinish;
+                    item.handleRemove = handleRemove;
                     if (item.doing === false && item.done === false) {
                       return <Item {...item} />;
                     }
