@@ -83,28 +83,52 @@ export const Content = () => {
               <Tab.Content>
                 <Tab.Pane eventKey="first">
                   {todo.map((item, index) => {
-                    item.id = index;
-                    item.handleClick = handleClick;
-                    item.handleFinish = handleFinish;
-                    item.handleRemove = handleRemove;
                     if (item.doing === false && item.done === false) {
-                      return <Item {...item} />;
+                      return (
+                        <Item
+                          doing={item.doing}
+                          done={item.done}
+                          desc={item.desc}
+                          id={index}
+                          handleClick={handleClick}
+                          handleFinish={handleFinish}
+                          handleRemove={handleRemove}
+                        />
+                      );
                     }
                   })}
                 </Tab.Pane>
                 <Tab.Pane eventKey="second">
                   {todo.map((item, index) => {
-                    item.id = index;
                     if (item.doing === true && item.done === false) {
-                      return <Item {...item} />;
+                      return (
+                        <Item
+                          doing={item.doing}
+                          done={item.done}
+                          desc={item.desc}
+                          id={index}
+                          handleClick={handleClick}
+                          handleFinish={handleFinish}
+                          handleRemove={handleRemove}
+                        />
+                      );
                     }
                   })}
                 </Tab.Pane>
                 <Tab.Pane eventKey="third">
                   {todo.map((item, index) => {
-                    item.id = index;
                     if (item.done === true) {
-                      return <Item {...item} />;
+                      return (
+                        <Item
+                          doing={item.doing}
+                          done={item.done}
+                          desc={item.desc}
+                          id={index}
+                          handleClick={handleClick}
+                          handleFinish={handleFinish}
+                          handleRemove={handleRemove}
+                        />
+                      );
                     }
                   })}
                 </Tab.Pane>
